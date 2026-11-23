@@ -1,0 +1,408 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#fbf3f4"><title>حاضنة الأمان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--pri:#c2477a;--pri2:#ee8fb0;--g:#2e9e6b;--y:#d99a1c;--r:#d64545;--n:#8a8f98;--fs:16px;--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px)}
+:root[data-mode=light]{--bg:#fbf3f5;--tx:#2b1d27;--mut:#7d6a77;--card:rgba(255,255,255,.66);--cardb:rgba(255,255,255,.85);--line:rgba(120,60,90,.12);--sh:0 14px 34px -16px rgba(130,50,90,.35);--orb:.55}
+:root[data-mode=dark]{--bg:#140e13;--tx:#f7ecf1;--mut:#b9a4b0;--card:rgba(46,32,43,.58);--cardb:rgba(255,255,255,.09);--line:rgba(255,255,255,.09);--sh:0 16px 36px -18px rgba(0,0,0,.8);--orb:.38}
+:root[data-accent=rose]{--pri:#c2477a;--pri2:#ee8fb0}
+:root[data-accent=lilac]{--pri:#7a5cc9;--pri2:#b9a1f2}
+:root[data-accent=sage]{--pri:#2a8f86;--pri2:#85d6c8}
+:root[data-accent=gold]{--pri:#b8862b;--pri2:#ecc56e}
+:root[data-mode=dark][data-accent=rose]{--pri:#e46b9b}:root[data-mode=dark][data-accent=lilac]{--pri:#9b82e8}:root[data-mode=dark][data-accent=sage]{--pri:#46b5aa}:root[data-mode=dark][data-accent=gold]{--pri:#d9a742}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:var(--fs)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.65;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(120% 80% at 50% 0,color-mix(in srgb,var(--pri2) 22%,transparent),transparent 60%),var(--bg)}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:var(--orb);animation:fl 18s ease-in-out infinite alternate}
+.o1{width:380px;height:380px;background:var(--pri2);top:-120px;inset-inline-start:-90px}
+.o2{width:340px;height:340px;background:var(--pri);bottom:-120px;inset-inline-end:-100px;animation-delay:-6s;opacity:calc(var(--orb)*.7)}
+.o3{width:260px;height:260px;background:#f5c78a;top:42%;inset-inline-end:-80px;animation-delay:-11s;opacity:calc(var(--orb)*.5)}
+.grain{position:absolute;inset:0;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+@keyframes fl{to{transform:translate(40px,50px) scale(1.12)}}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+svg.i{width:1.25em;height:1.25em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.25em;flex:none}
+header{position:sticky;top:0;z-index:20;padding:calc(var(--sat) + 10px) 14px 10px;background:var(--card);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.logo{display:flex;align-items:center;gap:9px;flex:1;min-width:0}
+.mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--pri),var(--pri2));display:grid;place-items:center;color:#fff;box-shadow:0 6px 16px -6px var(--pri)}
+.logo b{font-family:"Amiri","Playfair Display",serif;font-size:1.3rem;color:var(--tx);white-space:nowrap}
+.chip{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--tx);border-radius:999px;padding:6px 12px;font:inherit;font-size:.78rem;cursor:pointer;max-width:42vw}
+.chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.av{width:36px;height:36px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font:600 .95rem inherit;cursor:pointer}
+.warn{font-size:.72rem;color:var(--mut);text-align:center;padding:7px 16px}
+main{max-width:640px;margin:0 auto;padding:4px 14px calc(104px + var(--sab))}
+#pg>*{animation:up .5s both}#pg>*:nth-child(2){animation-delay:.06s}#pg>*:nth-child(3){animation-delay:.12s}#pg>*:nth-child(4){animation-delay:.18s}#pg>*:nth-child(5){animation-delay:.24s}
+.card{background:var(--card);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--cardb);border-radius:22px;padding:16px 18px;margin:12px 0;box-shadow:var(--sh)}
+.card h3{margin:0 0 8px;font-size:.95rem;font-weight:600;display:flex;align-items:center;gap:8px}
+.card h3 .i{color:var(--pri)}
+h2.sec{font-family:"Amiri","Playfair Display",serif;font-size:1.35rem;margin:22px 4px 0}
+.big{font-family:"Amiri","Playfair Display",serif;font-size:2.1rem;line-height:1.2;font-weight:700;background:linear-gradient(135deg,var(--pri),var(--pri2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.mut{color:var(--mut);font-size:.82rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid .card{margin:0}.grid+.card,.grid+.grid{margin-top:12px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:6px 0}
+.b{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 11px;font-size:.76rem;font-weight:500;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c);border:1px solid color-mix(in srgb,var(--c) 35%,transparent);white-space:nowrap}
+.b::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
+.b.g{--c:var(--g)}.b.y{--c:var(--y)}.b.r{--c:var(--r)}.b.n{--c:var(--n)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:0;border-radius:14px;padding:11px 20px;font:inherit;font-weight:500;cursor:pointer;box-shadow:0 10px 22px -10px var(--pri);transition:transform .15s}
+.btn:active{transform:scale(.97)}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.o{background:transparent;color:var(--tx);border:1px solid var(--line);box-shadow:none}
+.btn.w{width:100%}
+select,input[type=text],input[type=email],input[type=password],input[type=date]{font:inherit;color:var(--tx);background:color-mix(in srgb,var(--bg) 70%,transparent);border:1px solid var(--line);border-radius:14px;padding:10px 12px;width:100%;outline:none}
+select:focus,input:focus{border-color:var(--pri);box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 20%,transparent)}
+input[type=range]{width:100%;accent-color:var(--pri)}
+label.f{display:block;font-size:.8rem;color:var(--mut);margin:10px 0 4px}
+nav{position:fixed;bottom:calc(10px + var(--sab));left:50%;transform:translateX(-50%);width:min(620px,calc(100% - 20px));z-index:20;display:flex;gap:2px;padding:6px;border-radius:26px;background:var(--card);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);border:1px solid var(--cardb);box-shadow:var(--sh)}
+nav button{flex:1;background:none;border:0;border-radius:20px;padding:7px 2px;font:inherit;font-size:.6rem;white-space:nowrap;color:var(--mut);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px}
+nav button .i{width:1.45em;height:1.45em}
+nav button.on{color:#fff;background:linear-gradient(135deg,var(--pri),var(--pri2));box-shadow:0 8px 18px -8px var(--pri)}
+canvas{max-width:100%}
+.al{border-inline-start:3px solid var(--n);padding:4px 10px;margin:8px 0;font-size:.88rem;background:color-mix(in srgb,var(--n) 8%,transparent);border-radius:0 10px 10px 0}
+[dir=rtl] .al{border-radius:10px 0 0 10px}
+.al.g{border-color:var(--g)}.al.y{border-color:var(--y)}.al.r{border-color:var(--r)}
+.seg{display:flex;background:color-mix(in srgb,var(--bg) 60%,transparent);border:1px solid var(--line);border-radius:14px;padding:3px;gap:2px}
+.seg button{flex:1;border:0;background:none;color:var(--mut);font:inherit;font-size:.82rem;padding:7px 8px;border-radius:11px;cursor:pointer}
+.seg button.on{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff}
+.sw{display:flex;gap:12px}.sw button{width:34px;height:34px;border-radius:50%;border:3px solid transparent;cursor:pointer;background:linear-gradient(135deg,var(--a),var(--b))}.sw button.on{border-color:var(--tx)}
+.tg{width:46px;height:26px;border-radius:99px;border:0;background:var(--n);position:relative;cursor:pointer;flex:none;transition:.2s}
+.tg::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.tg.on{background:var(--pri)}.tg.on::after{inset-inline-start:23px}
+.ring{position:relative;width:210px;height:210px;margin:4px auto}
+.ring svg.r{position:absolute;inset:0;transform:rotate(-90deg)}
+.ring .fr{position:absolute;inset:0;display:grid;place-items:center}
+.strip{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x proximity}
+.strip button{flex:none;width:62px;border:1px solid var(--line);background:var(--card);border-radius:16px;padding:6px 2px;font:inherit;font-size:.7rem;color:var(--mut);cursor:pointer;scroll-snap-align:center}
+.strip button.on{border-color:var(--pri);color:var(--tx);box-shadow:0 0 0 2px color-mix(in srgb,var(--pri) 30%,transparent)}
+.kv{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.9rem}.kv:last-child{border:0}
+.bar{height:8px;border-radius:9px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pri),var(--pri2));border-radius:9px}
+#toast{position:fixed;top:calc(var(--sat) + 70px);left:50%;transform:translateX(-50%) translateY(-20px);opacity:0;transition:.35s;z-index:60;background:var(--card);backdrop-filter:blur(20px);border:1px solid var(--cardb);box-shadow:var(--sh);border-radius:16px;padding:10px 16px;font-size:.85rem;max-width:90vw;pointer-events:none}
+#toast.s{opacity:1;transform:translateX(-50%)}
+.sheet{position:fixed;inset:0;z-index:50;background:rgba(10,5,10,.45);display:flex;align-items:flex-end;justify-content:center}
+.sheet>div{width:min(620px,100%);max-height:80vh;overflow:auto;background:var(--bg);border-radius:26px 26px 0 0;padding:18px 18px calc(24px + var(--sab));border:1px solid var(--cardb);animation:up .3s both}
+.opt{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 14px;margin:6px 0;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--tx);font:inherit;cursor:pointer}
+.opt.on{border-color:var(--pri);background:color-mix(in srgb,var(--pri) 10%,var(--card))}
+#auth{position:fixed;inset:0;z-index:70;overflow:auto;display:flex;align-items:center;justify-content:center;padding:20px;background:var(--bg)}
+#auth .box{width:min(420px,100%)}
+.hero-l{text-align:center;margin-bottom:10px}.hero-l .mark{width:64px;height:64px;border-radius:22px;margin:0 auto 10px}
+.hero-l h1{font-family:"Amiri","Playfair Display",serif;font-size:2rem;margin:4px 0}
+.err{color:var(--r);font-size:.82rem;min-height:1.2em;margin-top:8px}
+.fruitbox{display:grid;place-items:center;min-height:230px;background:radial-gradient(circle,color-mix(in srgb,var(--pri2) 28%,transparent),transparent 68%)}
+.fruitbox svg{filter:drop-shadow(0 14px 14px rgba(0,0,0,.18))}
+.hide{display:none!important}
+@media(prefers-reduced-motion:reduce),:root[data-motion=off]{*{animation:none!important;transition:none!important}}
+@media print{header,nav,.warn,.noprint,.bg{display:none!important}body{background:#fff;color:#000}.card{background:#fff;border:1px solid #999;box-shadow:none;backdrop-filter:none}.big{color:#000;background:none}}
+</style></head><body>
+<div class="bg"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grain"></div></div>
+<div id="auth" class="hide"></div>
+<div id="app" class="hide"><header id="hd"></header><div class="warn" id="wn"></div><main id="pg"></main><nav id="nv"></nav></div>
+<div id="toast"></div><div id="sh"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" onerror="void 0"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-statistics@7.8.3/dist/simple-statistics.min.js" onerror="void 0"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js" onerror="void 0"></script>
+<script>
+const $=s=>document.querySelector(s),DAY=864e5;
+const sv=(k,v)=>{try{localStorage.setItem('ha_'+k,JSON.stringify(v))}catch(e){}};
+const ld=(k,d)=>{try{const v=localStorage.getItem('ha_'+k);return v?JSON.parse(v):d}catch(e){return d}};
+let S=Object.assign({lang:'ar',theme:'auto',accent:'rose',size:'m',units:'metric',digits:'latin',autokick:true,notif:false,vib:true,sound:true,motion:true},ld('settings',{}));
+const L=(a,e)=>S.lang==='ar'?a:e;
+const loc=()=>S.lang==='ar'?(S.digits==='latin'?'ar-u-nu-latn':'ar'):'en';
+const fg=x=>Number(x).toLocaleString(loc());
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const IC={home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 9c0 6-8 11-8 11z"/>',baby:'<circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M9 15c1.5 1.5 4.5 1.5 6 0"/><path d="M12 3c1-1 2.5-1 3 0"/>',ai:'<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>',set:'<circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 00-.1-1.2l2-1.5-2-3.4-2.3 1a7 7 0 00-2-1.2L14 3h-4l-.6 2.7a7 7 0 00-2 1.2l-2.3-1-2 3.4 2 1.5A7 7 0 005 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-1a7 7 0 002 1.2L10 21h4l.6-2.7a7 7 0 002-1.2l2.3 1 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z"/>',flask:'<path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"/>',drop:'<path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/>',temp:'<path d="M14 14V5a2 2 0 00-4 0v9a4 4 0 104 0z"/>',act:'<path d="M3 12h4l3-8 4 16 3-8h4"/>',lung:'<path d="M12 4v9M12 13c-2 0-5 1-6 4s-3 2-3-2c0-4 2-9 5-10 2-.6 4 1 4 3M12 13c2 0 5 1 6 4s3 2 3-2c0-4-2-9-5-10-2-.6-4 1-4 3"/>',gauge:'<path d="M4 17a8 8 0 1116 0"/><path d="M12 17l4-5"/>',bell:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',moon:'<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',pal:'<path d="M12 3a9 9 0 100 18c1.5 0 2-1 1.5-2-.6-1.2 0-2.5 1.5-2.5H17a4 4 0 004-4c0-5-4-9.5-9-9.5z"/><path d="M7.5 11h.01M10 7.5h.01M14.5 7.5h.01"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="3"/><path d="M8 11V8a4 4 0 018 0v3"/>',out:'<path d="M9 4H5a2 2 0 00-2 2v12a2 2 0 002 2h4M16 8l4 4-4 4M20 12H9"/>',play:'<path d="M7 4l13 8-13 8z"/>',stop:'<rect x="6" y="6" width="12" height="12" rx="2"/>',hand:'<path d="M8 12V5a1.5 1.5 0 013 0v6M11 11V3.5a1.5 1.5 0 013 0V11M14 11V5a1.5 1.5 0 013 0v9c0 4-2.5 7-6 7-3 0-4-1.5-6-4l-1.5-2.5a1.5 1.5 0 012.3-1.8L8 14"/>',file:'<path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',print:'<path d="M7 9V3h10v6M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="7" y="14" width="10" height="7"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',wifi:'<path d="M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/>',eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',down:'<path d="M12 3v12M7 10l5 5 5-5M4 20h16"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',up:'<path d="M12 19V5M6 11l6-6 6 6"/>',dn:'<path d="M12 5v14M6 13l6 6 6-6"/>',flat:'<path d="M5 12h14"/>',ruler:'<rect x="3" y="8" width="18" height="8" rx="2"/><path d="M7 8v3M11 8v4M15 8v3M19 8v2"/>',chk:'<path d="M5 12l5 5 9-10"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>'};
+const ic=(n,c='')=>`<svg class="i ${c}" viewBox="0 0 24 24">${IC[n]}</svg>`;
+let toastT;const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('s');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('s'),3200)};
+const mq=window.matchMedia('(prefers-color-scheme: dark)');
+function applyS(){const R=document.documentElement,m=S.theme==='auto'?(mq.matches?'dark':'light'):S.theme;R.lang=S.lang;R.dir=S.lang==='ar'?'rtl':'ltr';R.dataset.mode=m;R.dataset.accent=S.accent;R.dataset.motion=S.motion?'on':'off';R.style.setProperty('--fs',{s:'14.5px',m:'16px',l:'18px'}[S.size]);document.title=L('حاضنة الأمان','Safe Nest');const tc=document.querySelector('meta[name=theme-color]');if(tc)tc.content=m==='dark'?'#140e13':'#fbf3f5'}
+mq.addEventListener&&mq.addEventListener('change',()=>{if(S.theme==='auto'){applyS();rerender()}});
+const setS=(k,v)=>{S[k]=v;sv('settings',S);applyS();rerender()};
+/* units */
+const tU=c=>S.units==='metric'?c.toFixed(1)+'°C':(c*9/5+32).toFixed(1)+'°F';
+const wU=g=>{if(S.units==='metric')return g>=1000?fg((g/1000).toFixed(2))+' '+L('كغ','kg'):fg(g)+' '+L('غ','g');const o=g/28.3495;return o>=16?Math.floor(o/16)+' '+L('رطل','lb')+' '+(o%16).toFixed(1)+' '+L('أونصة','oz'):o.toFixed(1)+' '+L('أونصة','oz')};
+const lU=c=>S.units==='metric'?(c<1?fg(c)+' '+L('سم','cm'):fg(c)+' '+L('سم','cm')):fg((c/2.54).toFixed(1))+' '+L('بوصة','in');
+/* ===== pregnancy ===== */
+const user0=ld('session',null);
+let lmp=(user0&&user0.lmp)||ld('lmp',null)||new Date(Date.now()-171*DAY).toISOString().slice(0,10),viewW=null;
+function preg(){const s=new Date(lmp+'T00:00:00'),d=Math.max(0,Math.floor((Date.now()-s)/DAY));return{d,w:Math.floor(d/7),r:d%7,edd:new Date(s.getTime()+280*DAY),left:Math.max(0,280-d),tri:d<98?1:d<196?2:3,pct:Math.min(1,d/280)}}
+const dt=(d,o)=>d.toLocaleDateString(loc(),o||{day:'numeric',month:'long',year:'numeric'});
+/* Hadlock 1991 EFW (g), weeks 10-40 */
+const P10=[29,37,48,61,77,97,121,150,185,227,275,331,398,471,556,652,758,876,1004,1145,1294,1453,1621,1794,1973,2154,2335,2513,2686,2851,3004],P50=[35,45,58,73,93,117,146,181,223,273,331,399,478,568,670,785,913,1055,1210,1379,1559,1751,1953,2162,2377,2595,2813,3028,3236,3435,3619],P90=[41,53,68,85,109,137,171,212,261,319,387,467,559,665,784,918,1068,1234,1416,1613,1824,2049,2285,2530,2781,3036,3291,3543,3786,4019,4234];
+const wt=w=>w<10?null:[P10[w-10],P50[w-10],P90[w-10]];
+const LEN={4:.1,5:.2,6:.6,7:1,8:1.6,9:2.3,10:3.1,11:4.1,12:5.4,13:7.4,14:8.7,15:10.1,16:11.6,17:13,18:14.2,19:15.3,20:25.6,21:26.7,22:27.8,23:28.9,24:30,25:34.6,26:35.6,27:36.6,28:37.6,29:38.6,30:39.9,31:41.1,32:42.4,33:43.7,34:45,35:46.2,36:47.4,37:48.6,38:49.8,39:50.7,40:51.2};
+const INF=[[0,'بداية تكوّن الجنين وانغراس البويضة في الرحم.','Implantation and the very first stage of development.','ابدئي بحمض الفوليك بعد استشارة الطبيبة.','Start folic acid after consulting your doctor.'],[6,'يبدأ القلب بالنبض وتتكوّن براعم الأطراف والدماغ.','The heart begins to beat; limb buds and the brain take shape.','وجبات صغيرة متكررة تخفف الغثيان.','Small frequent meals ease nausea.'],[9,'تتشكل الأعضاء الرئيسية وتبدأ الحركات الدقيقة.','Major organs form and tiny movements begin.','اشربي الماء بانتظام وخذي قسطًا من الراحة.','Drink water regularly and rest well.'],[13,'الثلث الثاني: تنمو الأصابع والملامح وتتحسن الحواس.','Second trimester: fingers and features develop, senses improve.','حافظي على نشاط خفيف كالمشي.','Keep up light activity such as walking.'],[18,'يتطور السمع وقد تبدئين بالإحساس بالحركة.','Hearing develops and you may start feeling movement.','لاحظي حركة الجنين يوميًا.','Notice your baby\'s movement daily.'],[24,'تنضج الرئتان تدريجيًا وتقوى العظام ويزداد الوزن.','Lungs gradually mature, bones strengthen and weight increases.','اهتمي بالكالسيوم والحديد حسب توجيه الطبيبة.','Mind calcium and iron as your doctor advises.'],[28,'الثلث الثالث: يتسارع نمو الدماغ وتنتظم دورات النوم.','Third trimester: brain growth accelerates and sleep cycles settle.','نامي على جانبك الأيسر وتابعي الحركة يوميًا.','Sleep on your left side and track movement daily.'],[34,'تكتمل الرئتان تقريبًا ويأخذ الجنين وضعية الولادة.','Lungs are nearly complete and baby settles into birth position.','جهّزي حقيبة الولادة.','Pack your hospital bag.'],[37,'الجنين مكتمل النمو تقريبًا ويستعد للولادة.','Baby is nearly full-term and preparing for birth.','تعرّفي على علامات المخاض ومتى تتوجهين للمستشفى.','Learn the signs of labour and when to go to hospital.']];
+const pick=(a,w)=>{let r=a[0];for(const x of a)if(w>=x[0])r=x;return r};
+const inf=w=>{const x=pick(INF,w);return{d:L(x[1],x[2]),t:L(x[3],x[4])}};
+/* ===== fruit size comparison (popular approximate references) ===== */
+const FR={4:['seed','بذرة خشخاش','Poppy seed','#4a4a62','#1f1f2e'],5:['seed','بذرة سمسم','Sesame seed','#f0dfb0','#c9ae6e'],6:['seed','حبة عدس','Lentil','#d99a48','#8c5a1e'],7:['berry','حبة توت أزرق','Blueberry','#6b7be0','#2b3584'],8:['rasp','توت العليق','Raspberry','#ea4d76','#a3173f'],9:['cherry','حبة كرز','Cherry','#e02a50','#8a0f2b'],10:['straw','فراولة','Strawberry','#f2495e','#b5162f'],11:['fig','حبة تين','Fig','#a05c90','#4f2a49'],12:['lemon','ليمونة خضراء','Lime','#aee05a','#5c9a1f'],13:['lemon','ليمونة','Lemon','#ffe85c','#e5b800'],14:['peach','خوخة','Peach','#ffc08a','#f2716b'],15:['apple','تفاحة','Apple','#f0554a','#a8191a'],16:['avo','أفوكادو','Avocado','#7ba048','#324b17'],17:['pom','رمانة','Pomegranate','#d83a4f','#7e0f22'],18:['pepper','فلفل رومي','Bell pepper','#ee4a4a','#a01818'],19:['mango','مانجو','Mango','#ffc05a','#ef6a3a'],20:['banana','موزة','Banana','#ffe85a','#e0b11a'],21:['carrot','جزرة','Carrot','#ff9a3b','#d35a0a'],22:['oval','بابايا','Papaya','#ffb850','#e0701a'],23:['peach','جريب فروت','Grapefruit','#ffab98','#e0605a'],24:['melon','شمام','Cantaloupe','#f5cd88','#d89a4a'],25:['cauli','قرنبيط','Cauliflower','#f7f4e8','#d7d0b4'],26:['lettuce','خسة','Lettuce','#aee07a','#4f9a2a'],27:['beet','شمندر','Beetroot','#b8266a','#5e0c33'],28:['egg','باذنجانة','Eggplant','#7b46a0','#3a1a55'],29:['squash','قرع العسل','Butternut squash','#f6c07a','#d68a2f'],30:['cabbage','كرنبة','Cabbage','#b0dc9c','#4f9a58'],31:['coco','جوزة هند','Coconut','#9a6a44','#4a2e18'],32:['zuc','كوسا','Zucchini','#6ab258','#2e6a26'],33:['pine','أناناس','Pineapple','#f8cf4a','#d9941a'],34:['melon','شمامة كبيرة','Melon','#d8eeaa','#9ac860'],35:['plain','شمام عسلي','Honeydew','#e6f2b8','#b8d56a'],36:['rom','خس روماني','Romaine lettuce','#8ccf68','#3a8a2e'],37:['zuc','قرع','Marrow','#c8e096','#7ca84a'],38:['pump','يقطينة','Pumpkin','#ff9a3a','#d9570a'],39:['wm','بطيخة صغيرة','Small watermelon','#58b064','#1f6a35'],40:['wm','بطيخة','Watermelon','#58b064','#1f6a35']};
+const LF='<path d="M54 22c8-9 20-8 22-5-2 9-13 11-22 5z" fill="#4f9a2a"/>';
+const sk=(c,x=0)=>`<path d="M50 ${30+x}c0-8 2-14 8-18" stroke="#6a4420" stroke-width="3.5" fill="none" stroke-linecap="round"/>`;
+const clip=(s,b)=>{const id='c'+Math.random().toString(36).slice(2,7);return`<clipPath id="${id}">${s}</clipPath><g clip-path="url(#${id})">${b}</g>`};
+function lines(a,c,n=9){let d='';for(let i=0;i<=n;i++){const p=i*100/n;d+=`M${p-30} 0L${p+30} 100M${p+30} 0L${p-30} 100`}return`<path d="${d}" stroke="${c}" stroke-width="1.3" fill="none" opacity=".4"/>`}
+const SH={
+seed:(f)=>`<ellipse cx="50" cy="52" rx="14" ry="9" fill="${f}" transform="rotate(-20 50 52)"/><ellipse cx="45" cy="48" rx="5" ry="2" fill="#fff" opacity=".4"/>`,
+berry:(f,c2)=>`<circle cx="50" cy="56" r="31" fill="${f}"/><path d="M50 36l5 8-5 3-5-3z" fill="${c2}"/><circle cx="40" cy="46" r="6" fill="#fff" opacity=".25"/>`,
+rasp:(f,c2)=>[[40,40],[58,40],[32,54],[50,52],[68,54],[40,68],[58,68],[50,82]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="11" fill="${f}" stroke="${c2}" stroke-width="1"/><circle cx="${p[0]-3}" cy="${p[1]-3}" r="3" fill="#fff" opacity=".35"/>`).join('')+'<path d="M50 30l-12-8 10 1-3-9 8 8 8-8-3 9 10-1z" fill="#4f9a2a"/>',
+cherry:(f)=>`<path d="M50 34C50 20 58 12 72 10" stroke="#4b7a2a" stroke-width="3" fill="none"/><circle cx="50" cy="62" r="27" fill="${f}"/><ellipse cx="40" cy="52" rx="7" ry="4" fill="#fff" opacity=".35"/>`,
+straw:(f)=>`<path d="M50 92C24 76 16 50 22 38c10-8 46-8 56 0 6 12-2 38-28 54z" fill="${f}"/>`+[[38,50],[52,46],[64,54],[44,64],[58,70],[50,80],[34,62]].map(p=>`<ellipse cx="${p[0]}" cy="${p[1]}" rx="1.8" ry="2.6" fill="#ffe89a"/>`).join('')+'<path d="M50 40l-16-12 10 2-2-10 9 9 9-9-2 10 10-2z" fill="#3f9a3a"/>',
+fig:(f,c2)=>`<path d="M50 12c6 6 8 10 8 16 14 6 24 20 20 38-4 14-18 24-28 24s-24-10-28-24c-4-18 6-32 20-38 0-6 2-10 8-16z" fill="${f}"/><path d="M50 28c-8 20-8 44 0 62M50 28c10 20 14 44 0 62" stroke="${c2}" stroke-width="2" fill="none" opacity=".4"/>`,
+lemon:(f)=>`<path d="M10 52c0-4 4-6 8-8 8-14 24-20 32-20s24 6 32 20c4 2 8 4 8 8s-4 6-8 8c-8 14-24 20-32 20s-24-6-32-20c-4-2-8-4-8-8z" fill="${f}"/><ellipse cx="40" cy="40" rx="10" ry="5" fill="#fff" opacity=".3" transform="rotate(-20 40 40)"/>`,
+peach:(f,c2)=>`<circle cx="50" cy="56" r="33" fill="${f}"/><path d="M50 24C40 40 40 70 50 88" stroke="${c2}" stroke-width="2.5" fill="none" opacity=".45"/>${LF}`,
+apple:(f)=>`<path d="M50 32C40 22 16 26 14 54c-2 24 16 42 32 40 3 0 4-1 4-1s1 1 4 1c16 2 34-16 32-40-2-28-26-32-36-22z" fill="${f}"/>${sk('#6a4420')}${LF}<ellipse cx="32" cy="48" rx="6" ry="10" fill="#fff" opacity=".25"/>`,
+avo:(f,c2)=>{const p='M50 8C38 8 32 24 28 38 18 52 14 66 22 80c8 14 36 14 44 0 8-14 4-28-6-42C56 24 62 8 50 8z';return`<path d="${p}" fill="${f}"/><path d="${p}" fill="#dfe98c" transform="translate(7 6) scale(.86)"/><circle cx="50" cy="66" r="14" fill="#8a5a30"/><ellipse cx="45" cy="61" rx="4" ry="3" fill="#fff" opacity=".3"/>`},
+pom:(f,c2)=>`<circle cx="50" cy="58" r="33" fill="${f}"/><path d="M38 28l3-12 6 7 3-9 3 9 6-7 3 12z" fill="${c2}"/><ellipse cx="38" cy="48" rx="6" ry="9" fill="#fff" opacity=".22"/>`,
+pepper:(f)=>`<path d="M26 34c-10 8-12 36-6 50 6 10 16 8 22 4 4 4 12 4 16 0 6 4 16 6 22-4 6-14 4-42-6-50-8-6-16-2-22 2-6-4-18-8-26-2z" fill="${f}"/><path d="M50 32c0-8 0-12 6-17" stroke="#3f7a2a" stroke-width="6" stroke-linecap="round" fill="none"/><ellipse cx="32" cy="50" rx="5" ry="12" fill="#fff" opacity=".25"/>`,
+mango:(f)=>`<path d="M20 60C16 36 38 14 62 16c20 2 26 22 18 44-8 22-28 30-44 26C26 84 22 72 20 60z" fill="${f}"/>${LF}<ellipse cx="36" cy="40" rx="6" ry="12" fill="#fff" opacity=".25" transform="rotate(20 36 40)"/>`,
+banana:(f)=>`<path d="M16 28c8 4 16 12 24 26 8 14 24 20 44 14-4 16-24 24-44 18C20 78 6 52 16 28z" fill="${f}"/><path d="M16 28l-3-9 9 3z" fill="#6b4a1a"/><path d="M84 68l4 4-6 2z" fill="#6b4a1a"/>`,
+carrot:(f)=>`<path d="M72 30c2-12 8-18 14-20-2 8-4 15-8 22zM66 30c-6-8-6-16-4-22 7 4 10 12 10 22z" fill="#4faa3a"/><path d="M58 34Q74 28 82 44Q84 52 76 58L22 90Q10 94 14 82L44 44Q50 36 58 34z" fill="${f}"/><path d="M52 52l8 4M42 64l8 4M32 76l8 4" stroke="#fff" opacity=".3" stroke-width="2"/>`,
+oval:(f)=>`<ellipse cx="50" cy="54" rx="27" ry="40" fill="${f}" transform="rotate(20 50 54)"/><ellipse cx="38" cy="40" rx="6" ry="14" fill="#fff" opacity=".25" transform="rotate(20 38 40)"/>`,
+melon:(f,c2)=>`<circle cx="50" cy="52" r="38" fill="${f}"/>`+clip('<circle cx="50" cy="52" r="38"/>',lines(1,c2,8))+`<path d="M50 14v-6" stroke="#6a5a2a" stroke-width="4"/>`,
+plain:(f)=>`<ellipse cx="50" cy="54" rx="38" ry="35" fill="${f}"/><ellipse cx="36" cy="40" rx="10" ry="6" fill="#fff" opacity=".3"/><path d="M50 19v-8" stroke="#6a8a2a" stroke-width="4"/>`,
+cauli:(f,c2)=>`<path d="M14 58c-2 20 16 34 36 34s38-14 36-34z" fill="#7fbf4a"/>`+[[30,52,17],[50,40,20],[70,52,17],[40,64,15],[60,64,15]].map(c=>`<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}" fill="${f}" stroke="${c2}" stroke-width="1.5"/>`).join(''),
+lettuce:(f,c2)=>`<path d="M20 74C8 58 12 36 28 30c4-14 26-18 34-6 16 0 28 14 22 32 6 12 0 26-14 26-6 8-24 10-30 2-8 2-16-2-20-10z" fill="${f}"/><path d="M50 90C34 70 34 36 50 18M50 90c16-20 16-54 0-72M34 84c-8-16-6-34 2-48" stroke="${c2}" stroke-width="2" fill="none" opacity=".5"/>`,
+beet:(f)=>`<path d="M48 36c-4-12-2-24 4-28 6 6 6 18 2 28zM56 36c2-10 8-18 18-18 0 8-6 16-16 20z" fill="#4faa3a"/><path d="M50 92C28 92 14 78 16 60c2-16 14-26 34-26s32 10 34 26c2 18-12 32-34 32z" fill="${f}"/><path d="M50 92v8" stroke="${f}" stroke-width="3"/><ellipse cx="34" cy="52" rx="6" ry="10" fill="#fff" opacity=".2"/>`,
+egg:(f)=>`<path d="M66 20C88 30 92 58 76 80 64 96 42 98 30 86 18 74 24 50 40 38c6-4 8-10 8-16z" fill="${f}"/><path d="M38 28c4-8 10-14 16-14 6 0 12 4 14 10-6 2-10 6-14 14-6-2-12-4-16-10z" fill="#3f8a3a"/><ellipse cx="42" cy="66" rx="5" ry="12" fill="#fff" opacity=".22" transform="rotate(35 42 66)"/>`,
+squash:(f)=>`<path d="M42 8c10-2 20 2 20 12 0 16 4 24 12 32 14 14 8 40-24 40S14 68 26 54c8-8 12-16 12-32 0-6 2-12 4-14z" fill="${f}"/><path d="M44 62c0-8 6-12 12-8" stroke="#fff" opacity=".25" stroke-width="3" fill="none"/>`,
+cabbage:(f,c2)=>`<circle cx="50" cy="54" r="38" fill="${f}"/><path d="M50 92C26 72 26 34 50 16M50 92c24-20 24-58 0-76M50 92C38 70 38 36 50 16" stroke="${c2}" stroke-width="2.2" fill="none" opacity=".55"/>`,
+coco:(f,c2)=>`<circle cx="50" cy="54" r="38" fill="${f}"/>`+[[40,44],[58,44],[49,58]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="${c2}"/>`).join('')+'<ellipse cx="34" cy="36" rx="8" ry="5" fill="#fff" opacity=".2"/>',
+zuc:(f)=>`<rect x="30" y="4" width="40" height="92" rx="20" fill="${f}" transform="rotate(28 50 50)"/><rect x="38" y="14" width="6" height="60" rx="3" fill="#fff" opacity=".25" transform="rotate(28 50 50)"/>`,
+pine:(f,c2)=>`<path d="M50 40C40 26 32 16 36 4c8 4 12 14 14 22 2-8 8-18 16-22 2 12-6 24-16 36z" fill="#3f9a3a"/><ellipse cx="50" cy="66" rx="26" ry="32" fill="${f}"/>`+clip('<ellipse cx="50" cy="66" rx="26" ry="32"/>',lines(1,c2,8)),
+rom:(f,c2)=>`<path d="M50 96C28 82 20 50 34 10c8 6 12 12 16 24 4-12 8-18 16-24 14 40 6 72-16 86z" fill="${f}"/><path d="M50 96V30M50 70L38 54M50 62l12-14" stroke="${c2}" stroke-width="2" fill="none" opacity=".5"/>`,
+pump:(f,c2)=>`<ellipse cx="50" cy="58" rx="40" ry="32" fill="${f}"/><path d="M50 28C36 36 36 80 50 88M50 28c14 8 14 52 0 60M32 32C18 44 20 74 34 86M68 32c14 12 12 42-2 54" stroke="${c2}" stroke-width="3" fill="none" opacity=".55"/><rect x="45" y="14" width="10" height="16" rx="4" fill="#5a7a2a"/>`,
+wm:(f,c2)=>`<circle cx="50" cy="52" r="40" fill="${f}"/>`+clip('<circle cx="50" cy="52" r="40"/>','<path d="M50 6C34 30 34 76 50 98M50 6c16 24 16 70 0 92M24 14C10 40 14 70 30 94M76 14c14 26 10 56-6 80" stroke="'+c2+'" stroke-width="5" fill="none" opacity=".75"/>')+'<path d="M50 12v-7" stroke="#6a8a2a" stroke-width="4"/><ellipse cx="34" cy="34" rx="9" ry="5" fill="#fff" opacity=".22"/>'};
+function fruit(w,px){const k=FR[Math.min(40,Math.max(4,w))],id='g'+Math.random().toString(36).slice(2,7);return`<svg viewBox="0 0 100 100" width="${px}" height="${px}" role="img" aria-label="${k[L(1,2)]}"><defs><radialGradient id="${id}" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="${k[3]}"/><stop offset="1" stop-color="${k[4]}"/></radialGradient></defs><ellipse cx="50" cy="97" rx="${w<10?10:26}" ry="2.6" fill="#000" opacity=".12"/>${SH[k[0]](`url(#${id})`,k[4])}</svg>`}
+const fsz=cm=>Math.round(52+140*Math.pow(Math.min(cm,52)/51.2,.5));
+const frName=w=>FR[Math.min(40,Math.max(4,w))][L(1,2)];
+/* ===== simulation engine (PPG: sum of Gaussians as in NeuroKit2/PPGSynth; FHR: AR(1)+accelerations; Doppler envelope) ===== */
+const SIM={gn(){let u=0;for(let i=0;i<6;i++)u+=Math.random();return(u-3)/.707},g:(x,m,s)=>Math.exp(-((x-m)**2)/(2*s*s)),
+ ppg(t,bpm){const p=(t*bpm/60)%1;return this.g(p,.25,.07)+.4*this.g(p,.55,.1)},
+ dop(t,bpm){const p=(t*bpm/60)%1;return .9*this.g(p,.1,.025)+.6*this.g(p,.3,.03)},
+ ar:{},
+ a(k,sd,ph=.55){const x=(this.ar[k]||0)*ph+Math.sqrt(1-ph*ph)*sd*this.gn();this.ar[k]=x;return x}};
+let sc='normal',conn=true,r=0,off=0,tk=0,mv=[],mvTot=0,q=85,cur='home',sel='temp',cm='temp',acc=0;
+const SCN=[['normal','طبيعي','Normal'],['dehyd','جفاف','Dehydration'],['fever','ارتفاع حرارة','Fever'],['bp','ضغط أعلى من المعتاد','Higher blood-pressure trend'],['sugar','سكر أعلى من المعتاد','Higher glucose trend'],['lowmove','انخفاض حركة الجنين','Reduced fetal movement'],['fhr','نبض جنين أعلى من المعتاد','Elevated fetal heart rate'],['labor','انقباضات منتظمة (محاكاة)','Regular contractions'],['offline','قطع اتصال اللصقة','Patch disconnected']];
+const scName=()=>{const s=SCN.find(x=>x[0]===sc);return L(s[1],s[2])};
+function sim(){r=sc==='normal'?0:Math.min(1,r+.07);const k=x=>sc===x?r:0,p=preg(),base=146-(Math.max(10,p.w)-10)*.3;
+ acc*=.82;const vr=sc==='lowmove'?.3:1;
+ let fh=base+SIM.a('fh',1.8*vr)+2*vr*Math.sin(tk/6.5)+acc*vr+35*k('fhr');if(sc!=='fhr')fh=Math.min(157,Math.max(124,fh));
+ return{temp:36.6+SIM.a('t',.04)+1.7*k('fever'),gsr:4.5+SIM.a('g',.12)-2.6*k('dehyd'),hr:82+SIM.a('h',1.5)+20*k('fever'),spo2:Math.min(100,97+SIM.a('o',.35)),bp:1+SIM.a('b',.012)+.25*k('bp'),sg:1+SIM.a('s',.012)+.25*k('sugar'),fhr:fh}}
+/* ===== alert engine: baseline + robust z + EWMA ===== */
+const CAL=25,M={temp:{f:.08,t:['حرارة الجلد','Skin temperature'],m:['يرجى التحقق من درجة حرارة الجسم بميزان طبي','Please check your body temperature with a medical thermometer']},gsr:{f:.2,t:['مؤشر الترطيب','Hydration index'],m:['احتمال جفاف الجلد، قد تحتاجين إلى زيادة شرب الماء','Possible skin dryness — you may need to drink more water']},hr:{f:2,t:['النبض','Pulse'],m:['تغيّر غير معتاد في نبض الأم','Unusual change in maternal pulse']},bp:{f:.03,t:['اتجاه الضغط','Blood-pressure trend'],m:['اتجاه الضغط خارج المعتاد: يرجى التحقق بجهاز ضغط معتمد','Pressure trend outside your usual: please check with a certified monitor']},sg:{f:.03,t:['اتجاه السكر','Glucose trend'],m:['اتجاه السكر خارج المعتاد: يرجى التحقق بفحص سكر معتمد','Glucose trend outside your usual: please check with a certified test']},spo2:{f:.5,t:['الأكسجين','Oxygen'],m:['تغيّر في مستوى الأكسجين: يرجى التحقق','Change in oxygen level: please verify']},fhr:{f:8,t:['نبض الجنين','Fetal heart rate'],m:['تغيّر في نبض الجنين المرصود: تواصلي مع جهة الرعاية إن شعرتِ بقلق','Change in observed fetal heart rate: contact your care provider if concerned']},mv:{t:['حركة الجنين','Fetal movement'],m:['انخفاض معدل ركلات الجنين مقارنة بمعدلكِ المعتاد: اطلبي التقييم الطبي فورًا ولا تنتظري تنبيه التطبيق','Kick rate has dropped below your usual: seek medical assessment now, do not wait for an app alert']},ct:{t:['الانقباضات','Contractions'],m:['انقباضات منتظمة: تواصلي مع جهة الرعاية أو توجهي للمستشفى (قبل الأسبوع 37 تستدعي تقييمًا فوريًا، وقرب الولادة تُطبَّق قاعدة 5-1-1)','Regular contractions: contact your care provider or go to hospital (before week 37 this needs prompt assessment; near term the 5-1-1 rule applies)']}};
+const E={};for(const k in M)E[k]={buf:[],ew:0,lvl:0,med:undefined};
+let alerts=ld('alerts',[]);
+const SPEC={off:['اللصقة غير متصلة','Patch disconnected'],on:['عاد اتصال اللصقة','Patch reconnected'],sess:['توقفت جلسة الاستماع بسبب انقطاع الاتصال','Listening session stopped: connection lost']};
+const amsg=a=>M[a.k]?L(...M[a.k].m)+(a.l===2&&a.k!=='mv'?L(' — يستدعي تقييمًا عاجلًا',' — needs urgent medical assessment'):''):L(...SPEC[a.k]);
+function addAlert(l,k){const a={t:Date.now(),l,k};alerts.unshift(a);alerts=alerts.slice(0,50);sv('alerts',alerts);toast(amsg(a));
+ if(l>=2){try{S.vib&&navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}try{S.notif&&Notification.permission==='granted'&&new Notification(L('حاضنة الأمان','Safe Nest'),{body:amsg(a)})}catch(e){}}}
+function setLvl(k,l){const e=E[k];if(l===e.lvl)return;e.lvl=l;if(l>0)addAlert(l,k)}
+function feed(k,v){const e=E[k];e.buf.push(v);if(e.buf.length>300)e.buf.shift();e.v=v;
+ if(e.buf.length===CAL){const s=[...e.buf].sort((a,b)=>a-b);e.med=s[CAL>>1];e.mad=Math.max([...e.buf].map(x=>Math.abs(x-e.med)).sort((a,b)=>a-b)[CAL>>1],M[k].f)}
+ if(e.med===undefined)return;e.ew=.3*.6745*(v-e.med)/e.mad+.7*e.ew;let l=Math.abs(e.ew)>2.5?1:0;
+ if(k==='gsr'&&e.ew>0)l=0;if(k==='temp'&&v>=38)l=2;if(k==='spo2'&&v<94)l=2;if(k==='fhr'&&(v<110||v>160))l=2;setLvl(k,l)}
+const cal=()=>E.temp.med===undefined;
+const ov=()=>!conn?3:cal()?4:Math.max(...Object.values(E).map(e=>e.lvl));
+const LVT=[['ضمن النمط المعتاد','Within your usual pattern'],['يحتاج انتباهًا','Needs attention'],['يستدعي تقييمًا عاجلًا','Needs urgent assessment'],['بيانات غير متاحة','No data'],['جارٍ تحديد خط الأساس','Calibrating baseline']],CL=['g','y','r','n','n'];
+const bd=l=>`<span class="b ${CL[l]}">${L(...LVT[l])}</span>`;
+const st=k=>!conn?3:E[k].med===undefined?4:E[k].lvl;
+const dir=k=>!conn?L('بيانات غير متاحة','No data'):E[k].med===undefined?L('جارٍ المعايرة','Calibrating'):E[k].ew>2.5?L('أعلى من المعتاد','Above usual'):E[k].ew<-2.5?L('أقل من المعتاد','Below usual'):L('مستقر','Stable');
+const tm=t=>new Date(t).toLocaleTimeString(loc(),{hour:'2-digit',minute:'2-digit'});
+const alHtml=(a,c)=>a.slice(0,c).map(x=>`<div class="al ${CL[x.l]}"><span class="mut">${tm(x.t)}</span> ${amsg(x)}</div>`).join('')||`<div class="mut">${L('لا توجد تنبيهات.','No alerts.')}</div>`;
+/* ===== AI: in-browser autoencoder (TensorFlow.js) trained on the user's own baseline; simple-statistics for trends ===== */
+const FK=['temp','gsr','hr','spo2','bp','sg','fhr'];
+const AI={state:'wait',backend:'—',mu:[],sd:[],thr:1,score:0,contrib:FK.map(()=>0),hist:[],model:null,
+ z(v){return FK.map((k,i)=>(v[k]-this.mu[i])/this.sd[i])},
+ async train(){this.state='training';const rows=FK.map(k=>E[k].buf.slice(0,CAL)),n=rows[0].length;
+  this.mu=rows.map(a=>a.reduce((x,y)=>x+y)/n);this.sd=rows.map((a,i)=>Math.max(1e-6,Math.sqrt(a.reduce((x,y)=>x+(y-this.mu[i])**2,0)/n),M[FK[i]].f/3));
+  const X=Array.from({length:n},(_,j)=>FK.map((k,i)=>(rows[i][j]-this.mu[i])/this.sd[i]));
+  if(window.tf){try{await tf.ready();this.backend='TensorFlow.js '+(tf.version&&tf.version.tfjs||'')+' · '+tf.getBackend();
+   const m=tf.sequential();m.add(tf.layers.dense({units:5,activation:'tanh',inputShape:[7]}));m.add(tf.layers.dense({units:3,activation:'tanh'}));m.add(tf.layers.dense({units:5,activation:'tanh'}));m.add(tf.layers.dense({units:7}));
+   m.compile({optimizer:tf.train.adam(.02),loss:'meanSquaredError'});const xs=tf.tensor2d(X);await m.fit(xs,xs,{epochs:120,batchSize:n,shuffle:true,verbose:0});xs.dispose();this.model=m;
+   const e=X.map(x=>this.err(x).reduce((a,b)=>a+b,0)/7).sort((a,b)=>a-b);this.thr=Math.max(.05,e[Math.floor(e.length*.95)]*1.8);this.state='ready';return}catch(x){this.model=null}}
+  this.backend=L('نموذج إحصائي احتياطي (تعذّر تحميل TensorFlow.js)','Statistical fallback (TensorFlow.js unavailable)');this.thr=2;this.state='ready'},
+ err(x){if(this.model){return tf.tidy(()=>{const t=tf.tensor2d([x]),o=this.model.predict(t);return Array.from(tf.squaredDifference(t,o).dataSync())})}return x.map(a=>a*a)},
+ step(){if(this.state!=='ready'||!conn)return;const v={};for(const k of FK)v[k]=E[k].v;const x=this.z(v),e=this.err(x),m=e.reduce((a,b)=>a+b,0)/7;
+  this.score=Math.min(100,Math.round(100*m/(this.thr*3)));this.contrib=e;this.hist.push(this.score);if(this.hist.length>180)this.hist.shift()},
+ slope(k){const b=E[k].buf.slice(-60);if(b.length<20)return 0;const p=b.map((y,i)=>[i,y]);try{return window.ss?ss.linearRegression(p).m:(()=>{const n=p.length,sx=p.reduce((a,c)=>a+c[0],0),sy=p.reduce((a,c)=>a+c[1],0),sxy=p.reduce((a,c)=>a+c[0]*c[1],0),sxx=p.reduce((a,c)=>a+c[0]**2,0);return(n*sxy-sx*sy)/(n*sxx-sx*sx)})()}catch(e){return 0}}};
+function tick(){tk++;
+ if(sc==='offline'){if(conn){conn=false;addAlert(3,'off')}off++;stopLis(1)}
+ else{if(!conn){conn=true;addAlert(3,'on')}
+  const v=sim();for(const k in v)feed(k,v[k]);q=Math.round(82+SIM.gn()*4);
+  if(S.autokick&&Math.random()<(sc==='lowmove'?0:.15))logKick('a');
+  ctSim();if(!cal()){setLvl('mv',kickCheck());setLvl('ct',ctLevel())}
+  if(!cal()&&AI.state==='wait')AI.train();AI.step()}
+ upd()}
+/* ===== UI shell ===== */
+const charts={};
+function mkChart(id,cfg){if(charts[id]){charts[id].destroy();delete charts[id]}const c=document.getElementById(id);if(!c||!window.Chart)return null;const cs=getComputedStyle(document.documentElement);Chart.defaults.color=cs.getPropertyValue('--mut').trim();Chart.defaults.borderColor=cs.getPropertyValue('--line').trim();Chart.defaults.font.family='"IBM Plex Sans Arabic",system-ui,sans-serif';cfg.options=Object.assign({animation:false,maintainAspectRatio:false,plugins:{legend:{display:false}}},cfg.options);return charts[id]=new Chart(c,cfg)}
+const pri=()=>getComputedStyle(document.documentElement).getPropertyValue('--pri').trim();
+const grad=(c,col)=>{const g=c.getContext('2d').createLinearGradient(0,0,0,c.height||160);g.addColorStop(0,col+'55');g.addColorStop(1,col+'00');return g};
+const NAV=[['home','home',['الرئيسية','Home']],['preg','cal',['الحمل','Pregnancy']],['mom','heart',['الأم','Mother']],['fetal','baby',['الجنين','Baby']],['trk','hand',['التتبع','Track']],['ai','ai',['الذكاء','Insights']],['set','set',['الإعدادات','Settings']]];
+const sess=()=>{const s=ld('session',null);return s&&s.guest?Object.assign(s,{name:L('ضيفة','Guest')}):s};
+function shell(){const s=sess();$('#hd').innerHTML=`<div class="logo"><div class="mark">${ic('shield')}</div><b>${L('حاضنة الأمان','Safe Nest')}</b></div><button class="chip" onclick="scSheet()" aria-label="${L('سيناريو المحاكاة','Simulation scenario')}">${ic('flask')}<span>${scName()}</span></button><button class="av" onclick="go('set')" aria-label="${L('الإعدادات','Settings')}">${esc((s&&s.name||'?').trim().charAt(0).toUpperCase())}</button>`;
+ $('#wn').textContent=L('نموذج أولي بوضع المحاكاة، وليس بديلًا عن التشخيص أو الرعاية الطبية.','Prototype running in simulation mode. Not a substitute for diagnosis or medical care.');
+ $('#nv').innerHTML=NAV.map(n=>`<button data-p="${n[0]}" class="${cur===n[0]?'on':''}" onclick="go('${n[0]}')">${ic(n[1])}<span>${L(...n[2])}</span></button>`).join('')}
+function openSheet(h){$('#sh').innerHTML=`<div class="sheet" onclick="if(event.target===this)closeSheet()"><div>${h}</div></div>`}
+const closeSheet=()=>{$('#sh').innerHTML=''};
+function scSheet(){openSheet(`<h3 style="margin:0 0 4px;font-family:Amiri,serif;font-size:1.3rem">${L('مختبر المحاكاة','Simulation lab')}</h3><div class="mut">${L('اختاري سيناريو لرؤية كيف يتفاعل النظام مع التغيّر في البيانات المحاكاة.','Pick a scenario to see how the system reacts to simulated data changes.')}</div>`+SCN.map(s=>`<button class="opt ${sc===s[0]?'on':''}" onclick="setSc('${s[0]}')"><span>${L(s[1],s[2])}</span>${sc===s[0]?ic('chk'):''}</button>`).join(''))}
+function setSc(v){sc=v;r=0;closeSheet();shell()}
+function go(p){if(cur==='fetal'&&p!=='fetal'){/* keep listening running */}Object.keys(charts).forEach(k=>{charts[k].destroy();delete charts[k]});cur=p;shell();const b=B[p]();$('#pg').innerHTML=b;if(P[p])P[p]();upd();scrollTo(0,0)}
+const rerender=()=>{if(!sess())return;$('#app').classList.remove('hide');go(cur)};
+function upd(){if(!sess()||$("#app").classList.contains("hide"))return;if(U[cur])U[cur]()}
+/* ===== auth (demo only: stored locally; replace with a real backend) ===== */
+async function hsh(p,s){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s+p));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){let h=5381;for(const c of s+p)h=(h*33)^c.charCodeAt(0);return'f'+(h>>>0)}}
+let amode='in';
+function authUI(){const a=$('#auth');a.classList.remove('hide');$('#app').classList.add('hide');const up=amode==='up';
+ a.innerHTML=`<div class="box"><div class="hero-l"><div class="mark">${ic('shield')}</div><h1>${L('حاضنة الأمان','Safe Nest')}</h1><div class="mut">${L('رفيقتكِ الذكية في رحلة الحمل','Your intelligent companion through pregnancy')}</div></div>
+ <div class="card"><div class="seg"><button class="${up?'':'on'}" onclick="amode='in';authUI()">${L('تسجيل الدخول','Sign in')}</button><button class="${up?'on':''}" onclick="amode='up';authUI()">${L('حساب جديد','Create account')}</button></div>
+ ${up?`<label class="f">${L('الاسم','Name')}</label><input type="text" id="an" autocomplete="name">`:''}
+ <label class="f">${L('البريد الإلكتروني','Email')}</label><input type="email" id="ae" autocomplete="email" dir="ltr">
+ <label class="f">${L('كلمة المرور','Password')}</label><input type="password" id="ap" autocomplete="${up?'new-password':'current-password'}" dir="ltr">
+ ${up?`<label class="f">${L('أول يوم من آخر دورة شهرية (اختياري)','First day of last period (optional)')}</label><input type="date" id="al">`:''}
+ <div class="err" id="aerr"></div><button class="btn w" onclick="doAuth()">${up?L('إنشاء الحساب','Create account'):L('دخول','Sign in')}</button>
+ ${up?'':`<div style="text-align:center;margin-top:10px"><a href="#" class="mut" onclick="toast(L('هذه نسخة تجريبية: استعادة كلمة المرور تحتاج خادمًا حقيقيًا.','Demo build: password recovery needs a real backend.'));return false">${L('نسيتِ كلمة المرور؟','Forgot password?')}</a></div>`}
+ <button class="btn o w" style="margin-top:12px" onclick="guest()">${L('متابعة كضيفة','Continue as guest')}</button></div>
+ <div class="mut" style="text-align:center">${L('تسجيل تجريبي محلي على هذا الجهاز فقط.','Demo sign-in stored locally on this device only.')}</div>
+ <div class="seg" style="max-width:200px;margin:12px auto 0"><button class="${S.lang==='ar'?'on':''}" onclick="setS('lang','ar')">العربية</button><button class="${S.lang==='en'?'on':''}" onclick="setS('lang','en')">English</button></div></div>`}
+function startSession(o){sv('session',o);if(o.lmp){lmp=o.lmp;viewW=null}$('#auth').classList.add('hide');$('#app').classList.remove('hide');cur='home';go('home')}
+const guest=()=>startSession({guest:true,name:L('ضيفة','Guest')});
+async function doAuth(){const e=($('#ae').value||'').trim().toLowerCase(),p=$('#ap').value||'',er=m=>$('#aerr').textContent=m,us=ld('users',{});
+ if(!/^\S+@\S+\.\S+$/.test(e))return er(L('أدخلي بريدًا إلكترونيًا صحيحًا.','Enter a valid email.'));
+ if(amode==='up'){const n=($('#an').value||'').trim();if(n.length<2)return er(L('أدخلي اسمك.','Enter your name.'));if(p.length<8)return er(L('كلمة المرور 8 أحرف على الأقل.','Password must be at least 8 characters.'));if(us[e])return er(L('هذا البريد مسجّل مسبقًا.','This email is already registered.'));
+  const salt=Math.random().toString(36).slice(2),l=$('#al').value||'';us[e]={name:n,salt,hash:await hsh(p,salt),lmp:l};sv('users',us);startSession({email:e,name:n,lmp:l||null})}
+ else{const u=us[e];if(!u||u.hash!==await hsh(p,u.salt))return er(L('البريد أو كلمة المرور غير صحيحة.','Incorrect email or password.'));startSession({email:e,name:u.name,lmp:u.lmp||null})}}
+function logout(){try{localStorage.removeItem('ha_session')}catch(e){}stopLis();amode='in';authUI()}
+/* ===== pages: B=build, P=post-build, U=live update ===== */
+const B={},P={},U={};
+const tile=(i,t,v,s)=>`<div class="card"><h3>${ic(i)}${t}</h3><div class="big" style="font-size:1.7rem">${v}</div><div class="mut">${s||''}</div></div>`;
+B.home=()=>{const p=preg(),w=Math.max(4,Math.min(40,p.w)),s=sess(),C=2*Math.PI*94,len=LEN[w];
+ return`<section class="card" style="text-align:center"><div class="row"><div style="text-align:start"><div class="mut">${L('مرحبًا','Hello')}</div><b style="font-family:Amiri,serif;font-size:1.3rem">${esc(s&&s.name||'')}</b></div><span id="ob"></span></div>
+ <div class="ring"><svg class="r" viewBox="0 0 210 210"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--pri)"/><stop offset="1" stop-color="var(--pri2)"/></linearGradient></defs><circle cx="105" cy="105" r="94" fill="none" stroke="var(--line)" stroke-width="10"/><circle cx="105" cy="105" r="94" fill="none" stroke="url(#rg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p.pct)}"/></svg><div class="fr">${fruit(w,Math.min(120,fsz(len)*.75))}</div></div>
+ <div class="mut">${L('طفلكِ الآن بحجم','Your baby is about the size of')}</div><div class="big">${frName(w)}</div>
+ <div class="mut" style="margin-top:6px">${L('الأسبوع','Week')} ${fg(p.w)} + ${fg(p.r)} ${L('أيام','days')} · ${L('الثلث','Trimester')} ${p.tri} · ${L('متبقي','left')} ${fg(p.left)} ${L('يومًا','days')}</div><div class="mut">${L('الولادة المتوقعة','Due date')}: ${dt(p.edd)}</div></section><div id="hl"></div>`};
+U.home=()=>{const p=preg(),f=wt(p.w),m=mv.filter(t=>t>Date.now()-6e4).length,ok=conn&&q>=60;$('#ob').innerHTML=bd(ov());
+ const mom=!conn?3:cal()?4:Math.max(E.temp.lvl,E.gsr.lvl,E.hr.lvl,E.bp.lvl,E.sg.lvl,E.spo2.lvl);
+ $('#hl').innerHTML=`<div class="grid">${tile('heart',L('نبض الأم','Mother pulse'),ok?fg(Math.round(E.hr.v))+' <small style="font-size:.9rem">bpm</small>':'—',bd(mom))}${tile('baby',L('نبض الجنين','Baby heart rate'),conn&&p.w>=10&&E.fhr.v?fg(Math.round(E.fhr.v))+' <small style="font-size:.9rem">bpm</small>':'—',bd(!conn?3:cal()?4:E.fhr.lvl))}${tile('hand',L('حركة الجنين','Fetal movement'),conn?fg(m):'—',conn?L('حركة في آخر دقيقة','movements in last minute'):L('بيانات غير متاحة','No data'))}${tile('ruler',L('الوزن التقديري','Estimated weight'),f?wU(f[1]):'—',f?L('النطاق','Range')+' '+wU(f[0])+' – '+wU(f[2]):L('غير متوفر قبل الأسبوع 10','Not available before week 10'))}</div>
+ <div class="card"><div class="row"><b>${ic('wifi')} ${L('اللصقة الإلكترونية','Smart patch')}</b><span class="b ${conn?'g':'n'}">${conn?L('متصلة (محاكاة)','Connected (simulated)'):L('غير متصلة','Offline')}</span></div>${cal()&&conn?`<div class="bar" style="margin-top:8px"><i style="width:${Math.min(100,E.temp.buf.length/CAL*100)}%"></i></div><div class="mut">${L('جارٍ تحديد خط الأساس الخاص بكِ','Learning your personal baseline')}</div>`:''}</div>
+ <div class="card"><h3>${ic('ai')}${L('مؤشر الذكاء الاصطناعي','AI deviation index')}</h3>${AI.state==='ready'&&conn?`<div class="row"><div class="big">${fg(AI.score)}<small style="font-size:1rem">/100</small></div><button class="btn o" onclick="go('ai')">${L('التفاصيل','Details')}</button></div><div class="bar"><i style="width:${AI.score}%"></i></div>`:`<div class="mut">${AI.state==='training'?L('جارٍ تدريب النموذج على بياناتكِ…','Training model on your data…'):L('بانتظار اكتمال خط الأساس','Waiting for baseline')}</div>`}</div>
+ <div class="card"><h3>${ic('bell')}${L('آخر تنبيه','Latest alert')}</h3>${alHtml(alerts,1)}<button class="btn" onclick="go('rep')">${ic('file')}${L('التقرير الأسبوعي','Weekly report')}</button></div>`};
+/* pregnancy */
+B.preg=()=>`<section class="card"><label class="f" style="margin-top:0">${L('أول يوم من آخر دورة شهرية','First day of last period')}</label><input type="date" id="lm" value="${lmp}" onchange="lmp=this.value||lmp;sv('lmp',lmp);viewW=null;go('preg')"></section><div id="pr"></div>
+<section class="card"><label class="f" style="margin-top:0">${L('استعرضي أسبوعًا','Browse a week')}: <b id="wl"></b></label><input type="range" id="sl" min="4" max="40" oninput="viewW=+this.value;rp()"><div class="strip" id="st">${Array.from({length:37},(_,i)=>`<button data-w="${i+4}" onclick="viewW=${i+4};$('#sl').value=viewW;rp()">${fruit(i+4,38)}<div>${i+4}</div></button>`).join('')}</div></section><div id="wk"></div>
+<section class="card"><h3>${ic('act')}${L('منحنى الوزن التقديري','Estimated weight curve')}</h3><div style="height:210px"><canvas id="gc"></canvas></div><div class="mut">${L('المئين 10 / 50 / 90 والنقطة تمثل الأسبوع المعروض.','10th / 50th / 90th percentile; the dot is the week shown.')}</div></section>`;
+P.preg=()=>{const p=preg();viewW=viewW??Math.min(40,Math.max(4,p.w));const u=S.units==='metric',cv=g=>u?g:g/453.6;
+ mkChart('gc',{type:'line',data:{labels:Array.from({length:31},(_,i)=>i+10),datasets:[{data:P10.map(cv),borderColor:'#9aa3ad',borderDash:[4,4],pointRadius:0,borderWidth:1.5,tension:.3},{data:P90.map(cv),borderColor:'#9aa3ad',borderDash:[4,4],pointRadius:0,borderWidth:1.5,tension:.3,fill:'-1',backgroundColor:'rgba(150,150,170,.12)'},{data:P50.map(cv),borderColor:pri(),pointRadius:0,borderWidth:2.5,tension:.3},{data:[],borderColor:pri(),backgroundColor:pri(),pointRadius:8,showLine:false}]},options:{scales:{y:{title:{display:true,text:u?L('غرام','g'):L('رطل','lb')}}}}});rp()};
+function rp(){const p=preg(),w=viewW,x=wt(w),i=inf(w),len=LEN[w];$('#sl').value=w;$('#wl').textContent=w;
+ document.querySelectorAll('#st button').forEach(b=>{const on=+b.dataset.w===w;b.classList.toggle('on',on);if(on)b.scrollIntoView({inline:'center',block:'nearest'})});
+ $('#pr').innerHTML=`<div class="grid"><div class="card"><div class="mut">${L('عمر الحمل','Gestational age')}</div><div class="big">${fg(p.w)}<small style="font-size:1rem">${L('أ','w')}</small> ${fg(p.r)}<small style="font-size:1rem">${L('ي','d')}</small></div></div><div class="card"><div class="mut">${L('الثلث','Trimester')}</div><div class="big">${p.tri}</div></div><div class="card"><div class="mut">${L('موعد الولادة','Due date')}</div><b>${dt(p.edd)}</b></div><div class="card"><div class="mut">${L('الأيام المتبقية','Days left')}</div><div class="big">${fg(p.left)}</div></div></div>`;
+ $('#wk').innerHTML=`<section class="card"><h3>${L('الأسبوع','Week')} ${w}</h3><div class="fruitbox">${fruit(w,fsz(len))}</div><div style="text-align:center"><div class="mut">${L('بحجم','About the size of a')}</div><div class="big">${frName(w)}</div></div>
+ <div class="kv"><span>${w<20?L('الطول (من الرأس للمقعدة)','Length (crown–rump)'):L('الطول (من الرأس للقدم)','Length (crown–heel)')}</span><b>${lU(len)}</b></div>${x?`<div class="kv"><span>${L('الوزن التقديري (وسيط)','Estimated weight (median)')}</span><b>${wU(x[1])}</b></div><div class="kv"><span>${L('النطاق الطبيعي (10–90)','Normal range (10–90)')}</span><b>${wU(x[0])} – ${wU(x[2])}</b></div>`:`<div class="mut">${L('لا يتوفر مرجع وزن قبل الأسبوع 10.','No weight reference before week 10.')}</div>`}
+ <p>${i.d}</p><p class="mut">${i.t}</p><div class="mut" style="font-size:.72rem">${L('مقارنة الفواكه تقريبية ومتداولة في تطبيقات الحمل. الوزن: Hadlock et al., Radiology 1991;181:129-133. قيم مرجعية إحصائية وليست قياسات جنينك الفعلية.','Fruit comparison is approximate, as used in popular pregnancy apps. Weight: Hadlock et al., Radiology 1991;181:129-133. Statistical references, not your baby\'s actual measurements.')}</div></section>`;
+ const c=charts.gc;if(c){const d=Array(31).fill(null);if(w>=10)d[w-10]=(S.units==='metric'?P50[w-10]:P50[w-10]/453.6);c.data.datasets[3].data=d;c.update()}}
+/* mother */
+B.mom=()=>`<section class="card"><h3>${ic('act')}${L('موجة النبض (PPG محاكاة)','Pulse waveform (simulated PPG)')}</h3><canvas id="ppg" width="560" height="120" style="width:100%;height:110px"></canvas></section>
+<section class="card"><select id="cs" onchange="cm=this.value;upCh()">${['temp','hr','gsr','bp','sg','spo2'].map(k=>`<option value="${k}" ${k===cm?'selected':''}>${L(...M[k].t)}</option>`).join('')}</select><div style="height:170px;margin-top:10px"><canvas id="ch"></canvas></div></section><div id="ml"></div>`;
+P.mom=()=>{mkChart('ch',{type:'line',data:{labels:[],datasets:[{data:[],borderColor:pri(),borderWidth:2.5,tension:.35,pointRadius:0,fill:true,backgroundColor:grad($('#ch'),pri())}]},options:{scales:{x:{display:false}}}});upCh()};
+function upCh(){const c=charts.ch;if(cur!=='mom'||!c)return;const b=E[cm].buf.slice(-60);c.data.labels=b.map((_,i)=>i);c.data.datasets[0].data=cm==='temp'&&S.units!=='metric'?b.map(x=>x*9/5+32):b;c.options.scales.y.display=!(cm==='bp'||cm==='sg');c.update()}
+U.mom=()=>{const t=E.temp.v,ok=conn&&q>=60;upCh();
+ $('#ml').innerHTML=`<div class="card"><div class="row"><b>${ic('gauge')} ${L('ضغط الدم','Blood pressure')}</b>${bd(st('bp'))}</div><div class="mut">${dir('bp')}</div></div>
+ <div class="card"><div class="row"><b>${ic('act')} ${L('السكر','Glucose')}</b>${bd(st('sg'))}</div><div class="mut">${dir('sg')}</div></div>
+ <div class="card"><div class="row"><b>${ic('drop')} ${L('الترطيب','Hydration')}</b>${bd(st('gsr'))}</div><div class="mut">${!conn?L('بيانات غير متاحة','No data'):cal()?L('جارٍ المعايرة','Calibrating'):E.gsr.lvl?L('احتمال وجود جفاف، تذكّري بشرب الماء','Possible dehydration — remember to drink water'):L('الترطيب ضمن النمط المعتاد','Hydration within your usual pattern')}</div></div>
+ <div class="card"><div class="row"><b>${ic('temp')} ${L('حرارة الجلد','Skin temperature')}</b>${bd(st('temp'))}</div><div class="big">${conn&&t?tU(t):'—'}</div><div class="mut">${L('تقيس حرارة الجلد وليس الجسم الداخلية','Measures skin, not core body temperature')}</div></div>
+ <div class="card"><div class="row"><b>${ic('lung')} ${L('النبض والأكسجين','Pulse & oxygen')}</b><span class="mut">${L('جودة الإشارة','Signal quality')} ${conn?q+'%':'—'}</span></div>${ok?`<div class="big">${fg(Math.round(E.hr.v))} <small style="font-size:1rem">bpm</small> · ${fg(Math.round(E.spo2.v))}%</div>`:`<div class="mut">${L('لا توجد بيانات موثوقة','No reliable data')}</div>`}</div>`};
+/* baby */
+let ac,lis=null,ses=ld('ses',[]);
+function thump(f,d,v){const o=ac.createOscillator(),gn=ac.createGain(),fl=ac.createBiquadFilter(),t=ac.currentTime;fl.type='lowpass';fl.frequency.value=220;o.frequency.value=f;o.connect(gn);gn.connect(fl);fl.connect(ac.destination);gn.gain.setValueAtTime(0,t);gn.gain.linearRampToValueAtTime(v,t+.01);gn.gain.exponentialRampToValueAtTime(.001,t+d);o.start(t);o.stop(t+d+.05)}
+function beat(){if(!lis)return;if(S.sound){thump(70,.14,.9);setTimeout(()=>thump(55,.1,.6),170)}lis.tm=setTimeout(beat,60000/(E.fhr.v||140))}
+function startLis(){if(!conn||lis)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();ac.resume()}catch(e){}lis={s:Date.now(),q:[]};beat();upd()}
+function stopLis(auto){if(!lis)return;clearTimeout(lis.tm);const d=Math.round((Date.now()-lis.s)/1000),a=lis.q.length?Math.round(lis.q.reduce((x,y)=>x+y)/lis.q.length):0;ses.unshift({t:lis.s,d,q:a});ses=ses.slice(0,30);sv('ses',ses);lis=null;if(auto)addAlert(3,'sess');upd()}
+const togLis=()=>lis?stopLis():startLis();
+B.fetal=()=>`<section class="card"><div class="row"><b>${ic('hand')} ${L('حركة الجنين','Fetal movement')}</b><span id="fmb"></span></div><div class="mut" id="fmt"></div><div class="row"><button class="btn o" onclick="logKick('m');upd()">${ic('hand')}${L('تأكيد حركة من الأم','Log a movement I felt')}</button></div><p class="mut">${L('انخفاض الحركة التي تشعرين بها يستدعي التواصل الفوري مع جهة الرعاية، ولا تنتظري تنبيه التطبيق.','If you feel less movement, contact your care provider immediately; do not wait for an app alert.')}</p></section>
+<section class="card"><h3>${ic('baby')}${L('نبض الجنين (محاكاة)','Baby heart rate (simulated)')}</h3><div class="row"><div class="big" id="fv">—</div><span class="mut" id="fq"></span></div><canvas id="dop" width="560" height="110" style="width:100%;height:100px"></canvas><div style="height:140px;margin-top:6px"><canvas id="fh"></canvas></div><div class="mut">${L('النطاق المعتاد المرجعي 110–160 نبضة/دقيقة. القيم محاكاة وليست قياسًا حقيقيًا.','Typical reference range 110–160 bpm. Values are simulated, not real measurements.')}</div></section>
+<section class="card"><h3>${ic('wifi')}${L('الاستماع لنبض الجنين (تجريبي)','Listen to baby (experimental)')}</h3><div id="lt"></div><button class="btn" id="lb" onclick="togLis()"></button><p class="mut">${L('عدم التقاط الصوت لا يعني توقف النبض أو سلامته.','Not picking up a sound does not mean the heartbeat has stopped or is fine.')}</p></section><section class="card"><h3>${ic('file')}${L('سجل الجلسات','Session log')}</h3><div id="sl2"></div></section>`;
+P.fetal=()=>{mkChart('fh',{type:'line',data:{labels:[],datasets:[{data:[],borderColor:pri(),borderWidth:2.5,tension:.3,pointRadius:0},{data:[],borderColor:'#2e9e6b88',borderDash:[5,5],pointRadius:0,borderWidth:1},{data:[],borderColor:'#2e9e6b88',borderDash:[5,5],pointRadius:0,borderWidth:1}]},options:{scales:{x:{display:false},y:{min:90,max:190}}}})};
+U.fetal=()=>{const m=mv.filter(t=>t>Date.now()-6e4).length,lq=conn?Math.max(40,q-5):0,p=preg();if(lis&&conn)lis.q.push(lq);
+ $('#fmb').innerHTML=bd(!conn?3:cal()?4:E.mv.lvl);$('#fmt').textContent=conn?L(`المرصودة: ${fg(mvTot)} · آخر دقيقة: ${fg(m)}`,`Detected: ${fg(mvTot)} · last minute: ${fg(m)}`):L('بيانات غير متاحة','No data');
+ const f=conn&&p.w>=10&&E.fhr.v;$('#fv').innerHTML=f?`${fg(Math.round(E.fhr.v))} <small style="font-size:1rem">bpm</small>`:'—';$('#fq').innerHTML=conn?bd(st('fhr')):bd(3);
+ const c=charts.fh;if(c){const b=E.fhr.buf.slice(-90);c.data.labels=b.map((_,i)=>i);c.data.datasets[0].data=b;c.data.datasets[1].data=b.map(()=>110);c.data.datasets[2].data=b.map(()=>160);c.update()}
+ $('#lt').innerHTML=`<div class="row"><span class="b ${conn?'g':'n'}">${conn?L('متصلة','Connected'):L('غير متصلة','Offline')}</span><span class="mut">${L('جودة الإشارة','Signal quality')} ${lis?lq+'%':'—'}</span></div>${lis?`<p>${L('جارٍ التشغيل (صوت محاكى)','Playing (simulated sound)')} · ${fg(Math.round((Date.now()-lis.s)/1000))} ${L('ث','s')}</p>`:!conn?`<p class="mut">${L('لا يمكن البدء: اللصقة غير متصلة.','Cannot start: patch is offline.')}</p>`:''}`;
+ const b=$('#lb');b.disabled=!conn&&!lis;b.innerHTML=lis?ic('stop')+L('إيقاف','Stop'):ic('play')+L('بدء الاستماع','Start listening');
+ $('#sl2').innerHTML=ses.slice(0,5).map(s=>`<div class="mut">${dt(new Date(s.t),{day:'numeric',month:'short'})} ${tm(s.t)} · ${fg(s.d)} ${L('ث','s')} · ${L('جودة','quality')} ${fg(s.q)}%</div>`).join('')||`<div class="mut">${L('لا توجد جلسات.','No sessions.')}</div>`};
+/* AI insights */
+B.ai=()=>`<section class="card"><h3>${ic('ai')}${L('محرك الذكاء الاصطناعي','AI engine')}</h3><div id="as"></div></section><section class="card"><h3>${ic('gauge')}${L('مؤشر الانحراف عن نمطكِ المعتاد','Deviation from your usual pattern')}</h3><div id="ag"></div><div style="height:130px"><canvas id="aic"></canvas></div></section><section class="card"><h3>${ic('act')}${L('ما الذي يساهم في الانحراف؟','What drives the deviation?')}</h3><div id="ac"></div></section><section class="card"><h3>${ic('up')}${L('الاتجاهات (آخر دقيقة)','Trends (last minute)')}</h3><div id="at"></div></section><section class="card"><h3>${ic('file')}${L('ملخص ذكي','Smart summary')}</h3><div id="am"></div><button class="btn" style="margin-top:10px" onclick="go('rep')">${L('التقرير الأسبوعي','Weekly report')}</button></section>`;
+P.ai=()=>{mkChart('aic',{type:'line',data:{labels:[],datasets:[{data:[],borderColor:pri(),borderWidth:2,tension:.3,pointRadius:0,fill:true,backgroundColor:grad($('#aic'),pri())}]},options:{scales:{x:{display:false},y:{min:0,max:100}}}})};
+U.ai=()=>{const ready=AI.state==='ready'&&conn,sc2=AI.score,col=sc2<35?'var(--g)':sc2<65?'var(--y)':'var(--r)',arc=Math.PI*80;
+ $('#as').innerHTML=`<div class="kv"><span>${L('المحرك','Backend')}</span><b style="font-size:.78rem">${esc(AI.backend)}</b></div><div class="kv"><span>${L('الحالة','Status')}</span><b>${{wait:L('بانتظار خط الأساس','Waiting for baseline'),training:L('جارٍ التدريب','Training'),ready:L('جاهز','Ready')}[AI.state]}</b></div><div class="mut">${L('مشفّر تلقائي (Autoencoder) يتدرب داخل المتصفح على قراءاتكِ الأولى فقط، ولا تغادر البيانات جهازكِ. تجريبي وليس تشخيصيًا.','An autoencoder trains in your browser on your own first readings only; data never leaves your device. Experimental, not diagnostic.')}</div>`;
+ $('#ag').innerHTML=`<div style="text-align:center"><svg viewBox="0 0 200 118" width="240"><path d="M20 100A80 80 0 0 1 180 100" fill="none" stroke="var(--line)" stroke-width="14" stroke-linecap="round"/><path d="M20 100A80 80 0 0 1 180 100" fill="none" stroke="${ready?col:'var(--n)'}" stroke-width="14" stroke-linecap="round" stroke-dasharray="${arc}" stroke-dashoffset="${arc*(1-(ready?sc2:0)/100)}" style="transition:.6s"/><text x="100" y="92" text-anchor="middle" font-size="34" font-family="Amiri,serif" font-weight="700" fill="currentColor">${ready?fg(sc2):'—'}</text></svg></div>`;
+ const c=charts.aic;if(c){c.data.labels=AI.hist.map((_,i)=>i);c.data.datasets[0].data=AI.hist;c.update()}
+ const tot=AI.contrib.reduce((a,b)=>a+b,0)||1;$('#ac').innerHTML=ready?FK.map((k,i)=>`<div style="margin:8px 0"><div class="row" style="margin:0"><span class="mut">${L(...M[k].t)}</span><span class="mut">${fg(Math.round(AI.contrib[i]/tot*100))}%</span></div><div class="bar"><i style="width:${AI.contrib[i]/tot*100}%"></i></div></div>`).join(''):`<div class="mut">${L('بانتظار النموذج.','Waiting for the model.')}</div>`;
+ $('#at').innerHTML=conn&&!cal()?FK.map(k=>{const s=AI.slope(k)*60,f=M[k].f,d=Math.abs(s)>f?(s>0?'up':'dn'):'flat';return`<div class="kv"><span>${L(...M[k].t)}</span><b>${ic(d)} ${{up:L('صاعد','Rising'),dn:L('هابط','Falling'),flat:L('مستقر','Stable')}[d]}</b></div>`}).join(''):`<div class="mut">${L('بيانات غير كافية.','Not enough data.')}</div>`;
+ let msg=L('لا توجد بيانات كافية بعد.','Not enough data yet.');if(ready){const top=AI.contrib.indexOf(Math.max(...AI.contrib));msg=sc2<35?L('قراءاتكِ منسجمة مع نمطكِ المعتاد.','Your readings are consistent with your usual pattern.'):L(`لاحظ النموذج ابتعادًا عن نمطكِ المعتاد، وأكبر مساهم هو: ${L(...M[FK[top]].t)}. يرجى التحقق بجهاز طبي معتمد.`,`The model sees a shift from your usual pattern, mostly in: ${L(...M[FK[top]].t)}. Please verify with a certified device.`)}
+ $('#am').innerHTML=`<p style="margin:0">${msg}</p>`};
+/* report */
+B.rep=()=>`<div id="rl"></div><button class="btn noprint" onclick="window.print()">${ic('print')}${L('طباعة / حفظ PDF','Print / Save PDF')}</button>`;
+U.rep=()=>{const p=preg(),f=wt(p.w),av=k=>E[k].buf.length?E[k].buf.reduce((a,b)=>a+b)/E[k].buf.length:0,w=Math.max(4,Math.min(40,p.w));
+ $('#rl').innerHTML=`<div class="card"><h3>${ic('file')}${L('التقرير الأسبوعي','Weekly report')}</h3><div class="mut">${dt(new Date())}</div></div>
+ <div class="card"><b>${L('الحمل','Pregnancy')}</b><div>${L('الأسبوع','Week')} ${fg(p.w)} + ${fg(p.r)} ${L('أيام','days')} · ${L('بحجم','size of')} ${frName(w)}</div><div>${L('الوزن التقديري (وسيط)','Estimated weight (median)')}: ${f?wU(f[1])+' ('+L('النطاق','range')+' '+wU(f[0])+' – '+wU(f[2])+')':L('غير متوفر قبل الأسبوع 10','Not available before week 10')}</div></div>
+ <div class="card"><b>${L('الجنين','Baby')}</b><div>${L('الحركات المرصودة','Movements detected')}: ${fg(mvTot)} · ${L('جلسات الاستماع','Listening sessions')}: ${fg(ses.length)}</div><div>${L('متوسط نبض الجنين','Average fetal heart rate')}: ${av('fhr')?fg(Math.round(av('fhr'))):'—'}</div></div>
+ <div class="card"><b>${L('الأم','Mother')}</b><div>${L('اتجاه الضغط','Pressure trend')}: ${dir('bp')}</div><div>${L('اتجاه السكر','Glucose trend')}: ${dir('sg')}</div><div>${L('الترطيب','Hydration')}: ${E.gsr.lvl?L('احتمال جفاف','Possible dehydration'):L('ضمن المعتاد','Within usual')}</div><div>${L('متوسط حرارة الجلد','Average skin temperature')}: ${av('temp')?tU(av('temp')):'—'}</div><div>${L('متوسط النبض','Average pulse')}: ${av('hr')?fg(Math.round(av('hr'))):'—'}</div></div>
+ <div class="card"><b>${L('الركلات والانقباضات','Kicks & contractions')}</b><div>${L('ركلات آخر ساعة','Kicks in last hour')}: ${fg(kk.filter(x=>x.t>Date.now()-3600000).length)} · ${L('انقباضات مسجّلة','Contractions logged')}: ${fg(ct.filter(x=>x.e).length)}</div></div>
+ <div class="card"><b>${L('الذكاء الاصطناعي','AI')}</b><div>${L('مؤشر الانحراف الحالي','Current deviation index')}: ${AI.state==='ready'?fg(AI.score)+'/100':'—'}</div></div>
+ <div class="card"><b>${L('انقطاع الاتصال','Disconnections')}</b><div>${fg(off)} ${L('ثانية بلا بيانات','seconds without data')}</div></div>
+ <div class="card"><b>${L('التنبيهات','Alerts')}</b>${alHtml(alerts,8)}</div>
+ <div class="card"><b>${L('توصيات الأسبوع القادم','Next week')}</b><div>${inf(p.w).t} ${L('واستمري بشرب الماء ومراجعة الطبيبة في مواعيدكِ.','Keep drinking water and attend your check-ups.')}</div></div>`};
+/* settings */
+const tg=(k,f)=>`<button class="tg ${S[k]?'on':''}" role="switch" aria-checked="${!!S[k]}" onclick="${f||`setS('${k}',!S.${k})`}"></button>`;
+const seg=(k,o)=>`<div class="seg">${o.map(x=>`<button class="${S[k]===x[0]?'on':''}" onclick="setS('${k}','${x[0]}')">${x[1]}</button>`).join('')}</div>`;
+const srow=(i,t,c,col)=>col?`<div style="margin:12px 0"><div class="mut" style="margin-bottom:6px">${ic(i)} ${t}</div>${c}</div>`:`<div class="row" style="margin:12px 0"><span>${ic(i)} ${t}</span>${c}</div>`;
+async function togNotif(){if(S.notif)return setS('notif',false);try{const r=await Notification.requestPermission();if(r==='granted')setS('notif',true);else toast(L('لم يُمنح إذن الإشعارات.','Notification permission was not granted.'))}catch(e){toast(L('الإشعارات غير مدعومة هنا.','Notifications are not supported here.'))}}
+B.set=()=>{const s=sess()||{};return`<section class="card" style="display:flex;gap:14px;align-items:center"><div class="av" style="width:56px;height:56px;display:grid;place-items:center;font-size:1.4rem;cursor:default">${esc((s.name||'?').charAt(0).toUpperCase())}</div><div style="flex:1;min-width:0"><b>${esc(s.name||'')}</b><div class="mut" style="overflow:hidden;text-overflow:ellipsis">${s.guest?L('وضع الضيفة','Guest mode'):esc(s.email||'')}</div></div><button class="btn o" onclick="logout()">${ic('out')}${L('خروج','Sign out')}</button></section>
+ <h2 class="sec">${L('المظهر واللغة','Appearance & language')}</h2><section class="card">${srow('globe',L('اللغة','Language'),seg('lang',[['ar','العربية'],['en','English']]),1)}${srow('moon',L('السمة','Theme'),seg('theme',[['auto',L('تلقائي','Auto')],['light',L('فاتح','Light')],['dark',L('داكن','Dark')]]),1)}${srow('pal',L('لون التطبيق','Accent colour'),`<div class="sw">${[['rose','#c2477a','#ee8fb0'],['lilac','#7a5cc9','#b9a1f2'],['sage','#2a8f86','#85d6c8'],['gold','#b8862b','#ecc56e']].map(a=>`<button style="--a:${a[1]};--b:${a[2]}" class="${S.accent===a[0]?'on':''}" aria-label="${a[0]}" onclick="setS('accent','${a[0]}')"></button>`).join('')}</div>`,1)}${srow('eye',L('حجم الخط','Text size'),seg('size',[['s',L('صغير','Small')],['m',L('متوسط','Medium')],['l',L('كبير','Large')]]),1)}${S.lang==='ar'?srow('globe',L('الأرقام','Digits'),seg('digits',[['latin','123'],['arabic','١٢٣']]),1):''}${srow('flask',L('الحركات والانتقالات','Animations'),tg('motion'))}</section>
+ <h2 class="sec">${L('الحمل والوحدات','Pregnancy & units')}</h2><section class="card"><label class="f" style="margin-top:0">${L('أول يوم من آخر دورة شهرية','First day of last period')}</label><input type="date" value="${lmp}" onchange="lmp=this.value||lmp;sv('lmp',lmp);const s=sess();if(s){s.lmp=lmp;sv('session',s)}viewW=null;toast(L('تم التحديث','Updated'))">${srow('ruler',L('نظام الوحدات','Units'),seg('units',[['metric',L('متري (°م، غ)','Metric (°C, g)')],['imperial',L('إمبراطوري (°ف، رطل)','Imperial (°F, lb)')]]),1)}</section>
+ <h2 class="sec">${L('التنبيهات','Notifications')}</h2><section class="card">${srow('bell',L('إشعارات المتصفح للتنبيهات العاجلة','Browser notifications for urgent alerts'),tg('notif','togNotif()'))}${srow('act',L('اهتزاز عند التنبيه العاجل','Vibrate on urgent alert'),tg('vib'))}${srow('lung',L('صوت نبض الجنين المحاكى','Simulated heartbeat sound'),tg('sound'))}</section>
+ <h2 class="sec">${L('البيانات والخصوصية','Data & privacy')}</h2><section class="card"><div class="row"><button class="btn o" onclick="expo()">${ic('down')}${L('تصدير البيانات','Export data')}</button><button class="btn o" onclick="if(confirm(L('مسح التنبيهات وسجل الجلسات؟','Clear alerts and session log?'))){alerts=[];ses=[];sv('alerts',[]);sv('ses',[]);toast(L('تم المسح','Cleared'))}">${ic('trash')}${L('مسح السجل','Clear log')}</button></div><div class="mut">${L('كل البيانات تُحفظ محليًا على هذا الجهاز في هذا النموذج التجريبي.','In this prototype all data is stored locally on this device.')}</div></section>
+ <h2 class="sec">${L('حول التطبيق','About')}</h2><section class="card"><div class="kv"><span>${L('الإصدار','Version')}</span><b>0.3 ${L('تجريبي','prototype')}</b></div><div class="kv"><span>${L('مصدر البيانات','Data source')}</span><b>${L('محاكاة','Simulation')}</b></div><div class="kv"><span>${L('الذكاء الاصطناعي','AI')}</span><b style="font-size:.74rem;text-align:end">TensorFlow.js · simple-statistics</b></div><div class="kv"><span>${L('الرسوم البيانية','Charts')}</span><b>Chart.js</b></div>
+ <p class="mut">${L('محاكاة PPG: مجموع دالتَي غاوس بأسلوب NeuroKit2 / PPGSynth. نبض الجنين: عملية AR(1) مع تسارعات مرتبطة بالحركة وغلاف دوبلر تركيبي. وزن الجنين: Hadlock 1991. لا يوجد في JavaScript مكتبة PPG ناضجة جاهزة، فالمحاكي مدمج هنا ويمكن استبداله بخادم NeuroKit2.','PPG simulation: sum of two Gaussians (NeuroKit2 / PPGSynth style). Fetal heart rate: AR(1) process with movement-linked accelerations and a synthetic Doppler envelope. Fetal weight: Hadlock 1991. No mature ready-made PPG library exists for JavaScript, so the simulator is built in and can be swapped for a NeuroKit2 server.')}</p><p class="mut">${L('هذا النموذج ليس جهازًا طبيًا ولا بديلًا عن التشخيص أو الرعاية الطبية.','This prototype is not a medical device and not a substitute for diagnosis or medical care.')}</p></section>`};
+function expo(){const b=new Blob([JSON.stringify({settings:S,lmp,alerts,sessions:ses,exported:new Date().toISOString()},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='safe-nest-data.json';a.click()}
+/* waveform loop */
+const pb=Array(200).fill(0),db=Array(200).fill(0);let pt=0;
+function wave(c,buf,col,mid){const x=c.getContext('2d'),W=c.width,H=c.height;x.clearRect(0,0,W,H);x.strokeStyle=col;x.lineWidth=2;x.lineJoin='round';x.beginPath();buf.forEach((v,i)=>{const X=i*W/199,Y=mid?H/2-v*H*.42:H-12-v*(H-30);i?x.lineTo(X,Y):x.moveTo(X,Y)});x.stroke();if(mid){x.beginPath();buf.forEach((v,i)=>{const X=i*W/199,Y=H/2+v*H*.42;i?x.lineTo(X,Y):x.moveTo(X,Y)});x.globalAlpha=.45;x.stroke();x.globalAlpha=1}}
+setInterval(()=>{pt+=.04;const on=conn&&q>=60;pb.push(on?SIM.ppg(pt,E.hr.v||82)+SIM.gn()*.015:0);pb.shift();db.push(conn&&preg().w>=10?SIM.dop(pt,E.fhr.v||140)*(.8+.2*SIM.gn()*.3):0);db.shift();const a=$('#ppg'),b=$('#dop');if(a)wave(a,pb,pri(),0);if(b)wave(b,db,pri(),1)},40);
+/* ===== kick counter + contraction timer (auto-detected by the patch in simulation, manual entry always available) ===== */
+let kk=[],ct=[],ks=null,kh=ld('khist',[]),krc=0,kbase=null,cs={last:0,lr:0};
+(()=>{const T=Date.now();for(let t=T-400000;t<T;t+=1000)if(Math.random()<.15)kk.push({t,s:'a'})})(); /* simulated patch history so the baseline exists at start */
+const mean=a=>a.reduce((x,y)=>x+y,0)/(a.length||1);
+const fs=s=>{s=Math.max(0,Math.round(s));return fg(Math.floor(s/60))+':'+String(s%60).padStart(2,'0')};
+function logKick(s){const t=Date.now();mv.push(t);kk.push({t,s});if(kk.length>600)kk.shift();mvTot++;acc=Math.max(acc,9);if(ks&&kk.filter(x=>x.t>=ks.s).length>=10)finishKs(true)}
+function startKs(){ks={s:Date.now()};upd()}
+function finishKs(done){if(!ks)return;const n=kk.filter(x=>x.t>=ks.s).length;kh.unshift({t:ks.s,d:Math.round((Date.now()-ks.s)/1000),n,done:!!done});kh=kh.slice(0,20);sv('khist',kh);ks=null;toast(done?L('اكتمل العدّ: 10 حركات','Count complete: 10 movements'):L('تم حفظ الجلسة','Session saved'));upd()}
+/* drop in kick rate vs the mother's own baseline (needs 8 consecutive seconds below threshold) */
+function kickCheck(){const T=Date.now(),rr=kk.filter(x=>x.t>T-90000).length/90;
+ if(kbase===null){const b=kk.filter(x=>x.t<=T-90000&&x.t>T-330000).length/240;if(b<.03)return 0;kbase=b}
+ const ratio=rr/kbase,l=ratio<.2?2:ratio<.35?1:0;if(l===0&&E.mv.lvl===0)kbase=.995*kbase+.005*rr;krc=l?krc+1:0;return krc>=8?l:(l?E.mv.lvl:0)}
+function ctSim(){const T=Date.now(),a=ct[0];if(a&&!a.e&&a.src==='a'&&T>=a.end)a.e=T;
+ cs.lr=sc==='labor'?Math.min(1,cs.lr+.01):Math.max(0,cs.lr-.02);if(a&&!a.e)return;let go=false,dur=0;
+ if(sc==='labor'){const iv=(100-cs.lr*40)*1000;if(!cs.last||T-cs.last>=iv*(.95+Math.random()*.1)){go=true;dur=(35+cs.lr*20)*1000}}
+ else if(Math.random()<.0008){go=true;dur=(18+Math.random()*12)*1000}
+ if(go){cs.last=T;ct.unshift({s:T,e:null,end:T+dur,src:'a'});ct=ct.slice(0,60)}}
+function ctLevel(){const T=Date.now(),c=ct.filter(x=>x.e),w=preg().w;if(c.length<4||T-c[0].e>600000)return 0;
+ const iv=[];for(let i=0;i<Math.min(c.length-1,5);i++)iv.push((c[i].s-c[i+1].s)/1000);const aI=mean(iv),aD=mean(c.slice(0,6).map(x=>(x.e-x.s)/1000));
+ if(w<37)return c.filter(x=>x.s>T-1200000).length>=4&&iv.every(x=>x<=420)?2:0;
+ return c.length>=6&&aI<=300&&aD>=45&&iv.every(x=>x<=360)?2:(aI<=600?1:0)}
+function togCt(){const a=ct[0];if(a&&!a.e&&a.src==='m')a.e=Date.now();else if(!(a&&!a.e))ct.unshift({s:Date.now(),e:null,src:'m'});upd()}
+B.trk=()=>`<section class="card"><div class="row"><b>${ic('hand')} ${L('عدّاد الركلات','Kick counter')}</b><span id="kb"></span></div>
+<div class="row"><span class="mut">${ic('wifi')} ${L('عدّ تلقائي من اللصقة','Auto-count from patch')}</span>${tg('autokick')}</div><div id="kl"></div>
+<div class="row"><button class="btn" id="kbtn" onclick="ks?finishKs():startKs()"></button><button class="btn o" onclick="logKick('m');upd()">${ic('hand')}${L('سجّلي ركلة','Log a kick')}</button></div>
+<div style="height:120px;margin-top:10px"><canvas id="kc"></canvas></div><div class="mut">${L('الأعمدة: الركلات في كل دقيقة (آخر 10 دقائق).','Bars: kicks per minute (last 10 minutes).')}</div>
+<p class="mut">${L('يُنبّهكِ التطبيق إذا انخفض معدل الركلات عن معدلكِ المعتاد، لكن لا تعتمدي عليه وحده: إن شعرتِ بنقص الحركة تواصلي مع الرعاية فورًا. إرشاد شائع: 10 حركات خلال ساعتين.','The app alerts you if your kick rate falls below your own usual rate, but do not rely on it alone: if you feel less movement contact your care provider immediately. Common guidance: 10 movements within 2 hours.')}</p><div id="kh"></div></section>
+<section class="card"><div class="row"><b>${ic('act')} ${L('عدّاد الانقباضات','Contraction timer')}</b><span id="cb"></span></div><div id="cl"></div><button class="btn w" id="cbtn" onclick="togCt()"></button>
+<p class="mut">${L('قاعدة 5-1-1 قرب الولادة: انقباضات كل 5 دقائق أو أقل، وتدوم دقيقة، لمدة ساعة. قبل الأسبوع 37 تستدعي الانقباضات المنتظمة تواصلًا فوريًا مع الرعاية. في المحاكاة تسير الأحداث أسرع من الواقع.','5-1-1 rule near term: contractions every 5 minutes or less, lasting a minute, for an hour. Before week 37 regular contractions need prompt contact with your care provider. Simulated events run faster than real life.')}</p></section>`;
+P.trk=()=>{mkChart('kc',{type:'bar',data:{labels:Array.from({length:10},(_,i)=>i-9),datasets:[{data:[],backgroundColor:pri(),borderRadius:6}]},options:{scales:{y:{beginAtZero:true,ticks:{precision:0}},x:{display:false}}}})};
+U.trk=()=>{const T=Date.now(),on=conn,k60=kk.filter(x=>x.t>T-3600000).length,rr=kk.filter(x=>x.t>T-90000).length/90*60,n=ks?kk.filter(x=>x.t>=ks.s).length:0;
+ $('#kb').innerHTML=bd(!on?3:E.mv.lvl);$('#kbtn').innerHTML=ks?ic('stop')+L('إنهاء الجلسة','End session'):ic('play')+L('بدء جلسة عدّ','Start counting session');
+ $('#kl').innerHTML=`<div class="row"><div><div class="mut">${ks?L('الجلسة الحالية','Current session'):L('آخر ساعة','Last hour')}</div><div class="big">${ks?fg(n)+'<small style="font-size:1rem"> / 10</small>':fg(k60)}</div></div><div style="text-align:end"><div class="mut">${L('المعدل الحالي','Current rate')}</div><b>${on?fg(rr.toFixed(1)):'—'} ${L('/دقيقة','/min')}</b><div class="mut">${L('معدلكِ المعتاد','Your usual')} ${kbase?fg((kbase*60).toFixed(1)):'—'}</div></div></div>${ks?`<div class="bar"><i style="width:${Math.min(100,n*10)}%"></i></div><div class="mut">${L('المدة','Elapsed')} ${fs((T-ks.s)/1000)}</div>`:''}<div class="mut">${on?L('اللصقة متصلة وتحتسب الحركات (محاكاة).','Patch connected and counting movements (simulated).'):L('اللصقة غير متصلة: التسجيل اليدوي فقط.','Patch offline: manual logging only.')}</div>`;
+ const c=charts.kc;if(c){const b=Array(10).fill(0);kk.forEach(x=>{const i=9-Math.floor((T-x.t)/60000);if(i>=0&&i<10)b[i]++});c.data.datasets[0].data=b;c.update()}
+ $('#kh').innerHTML=kh.slice(0,3).map(s=>`<div class="kv"><span>${dt(new Date(s.t),{day:'numeric',month:'short'})} ${tm(s.t)}</span><b>${fg(s.n)} ${L('حركة','kicks')} · ${fs(s.d)}</b></div>`).join('');
+ const a=ct[0],act=a&&!a.e,done=ct.filter(x=>x.e),iv=[];for(let i=0;i<Math.min(done.length-1,5);i++)iv.push((done[i].s-done[i+1].s)/1000);
+ $('#cb').innerHTML=bd(!on&&!act?3:E.ct.lvl);$('#cbtn').innerHTML=a&&!a.e&&a.src==='m'?ic('stop')+L('انتهى الانقباض','Contraction ended'):ic('play')+L('بدأ انقباض','Contraction started');
+ $('#cl').innerHTML=`<div class="row"><div><div class="mut">${act?L('انقباض جارٍ','Contraction in progress'):L('آخر انقباض','Last contraction')}</div><div class="big">${act?fs((T-a.s)/1000):done[0]?fs((done[0].e-done[0].s)/1000):'—'}</div></div><div style="text-align:end"><div class="mut">${L('متوسط المدة','Avg duration')} ${done.length?fs(mean(done.slice(0,6).map(x=>(x.e-x.s)/1000))):'—'}</div><div class="mut">${L('متوسط الفاصل','Avg interval')} ${iv.length?fs(mean(iv)):'—'}</div><div class="mut">${L('آخر ساعة','Last hour')}: ${fg(done.filter(x=>x.s>T-3600000).length)}</div></div></div>`+done.slice(0,6).map((x,i)=>`<div class="kv"><span>${tm(x.s)} · ${x.src==='a'?L('اللصقة','patch'):L('يدوي','manual')}</span><b>${fs((x.e-x.s)/1000)}${done[i+1]?' · '+L('فاصل','gap')+' '+fs((x.s-done[i+1].s)/1000):''}</b></div>`).join('')};
+/* boot */
+applyS();setInterval(tick,1000);
+(()=>{const s=sess();if(s){$('#app').classList.remove('hide');go('home')}else authUI()})();
+</script></body></html>
